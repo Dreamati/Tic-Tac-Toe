@@ -1,3 +1,11 @@
+let container = document.querySelector('.container');
+const result = document.getElementById('Result');
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+    console.log("Clicked")
+    LogicDisplay.clear();
+})
 
 const Player = function(name, mark){
     const playerName = name;
@@ -15,7 +23,7 @@ const Player1 = Player("Player 1", 'X');
 const Player2 = Player("Player 2", 'O');
 Player1.turn = true;
 
-let container = document.querySelector('.container');
+
 
 container.addEventListener('click', function(e){
     LogicDisplay.Display(e.target);
@@ -32,15 +40,22 @@ container.addEventListener('click', function(e){
 
 const LogicDisplay = (function(){
 
+    let eventTracker = [];
     let checksum = 0;
 
     let Display = function(event) {
 
-        eventid = event.id;
         
+        eventid = event.id;
+
+        if (eventid){
+            eventTracker.push(event);
+        }
         let position = eventid.slice(-1);
         let playerTurn = Player1.turn ? Player1: Player2;
         
+        console.log(boardState.boardFilled.includes(position));
+        console.log(boardState.boardFilled);
 
         if (!boardState.boardFilled.includes(position) && eventid)
         {
@@ -81,14 +96,33 @@ const LogicDisplay = (function(){
             
             if (checksum === 3)
             {
-                
+                result.textContent = `${tempPlayer.playerName} Won`   
+                boardState.boardFilled = ['1','2','3','4','5','6','7','8','9'];
                 return `${tempPlayer.playerName} Won`
             }
             else {
                 checksum = 0;
             }
         }
+        if (boardState.boardFilled.length === 9)
+        {
+            result.textContent = "It's a Draw!"
+        }
         
     }
-return {Display, checkWinner}
+    function clear(){
+        Player1.moves = [];
+        Player2.moves = [];
+        Player1.turn = true;
+        Player2.turn = false;
+        console.log(eventTracker);
+        for (let i = 0; i< eventTracker.length; i++){
+            eventTracker[i].textContent = '';
+        }
+        eventTracker = [];
+        boardState.boardFilled = [];
+        result.textContent = '';
+
+    }
+return {Display, checkWinner, clear}
 })()

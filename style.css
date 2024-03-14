@@ -9,9 +9,11 @@ section * {
     margin: 100px auto;
     display: flex;
     flex-direction: column;
+    gap: 5px;
 }
 .container > * {
     display: flex;
+    gap: 5px;
     
 }
 .col {
@@ -26,13 +28,45 @@ section * {
     text-align: center;
     border: 2px solid;
  }
+ .col > *:hover {
+    
+    width: 11vh;
+    border: 1px double brown;
+ }
 .container * {
     flex: 1;
     
 }
 
+#Result {
+    text-align: center;
+    font-size: 3rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+button {
+    width: 25%;
+    height: 4vh;
+    background-color: white;
+    border-radius: 9px;
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+h1 {
+    font-weight: 900;
+    font-size: 5rem;
+    font-family: monospace, Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
 @media only screen and (max-width: 600px) {
     .container {
         width: 80%;
+    }
+    button {
+        width: 60%;
     }
 }

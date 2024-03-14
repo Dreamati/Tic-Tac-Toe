@@ -16,7 +16,7 @@ const Player = function(name, mark){
 }
 boardState = {
     boardFilled:[],
-    winningCombo: [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [2,5,8]]
+    winningCombo: [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 }
 
 const Player1 = Player("Player 1", 'X');
@@ -59,6 +59,10 @@ const LogicDisplay = (function(){
 
         if (!boardState.boardFilled.includes(position) && eventid)
         {
+            if (playerTurn.playerMark === 'X')
+            {
+                event.style.color = 'brown';
+            }
             
             event.textContent = `${playerTurn.playerMark}`;
             playerTurn.moves.push(position);
@@ -118,6 +122,7 @@ const LogicDisplay = (function(){
         console.log(eventTracker);
         for (let i = 0; i< eventTracker.length; i++){
             eventTracker[i].textContent = '';
+            eventTracker[i].style.color = 'black';
         }
         eventTracker = [];
         boardState.boardFilled = [];

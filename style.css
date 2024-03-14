@@ -19,14 +19,16 @@ section * {
     justify-content: center;
     min-height: 10vh;
     font-size: 5rem;
+    
 }
  .col > * {
     min-height: inherit;
     text-align: center;
+    border: 2px solid;
  }
 .container * {
     flex: 1;
-    border: 2px solid;
+    
 }
 
 @media only screen and (max-width: 600px) {

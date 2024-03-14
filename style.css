@@ -1,0 +1,36 @@
+h1 {
+    text-align: center;
+}
+section * {
+    
+}
+.container {
+    width: 30vw;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+}
+.container > * {
+    display: flex;
+    
+}
+.col {
+    align-items: center;
+    justify-content: center;
+    min-height: 10vh;
+    font-size: 5rem;
+}
+ .col > * {
+    min-height: inherit;
+    text-align: center;
+ }
+.container * {
+    flex: 1;
+    border: 2px solid;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+}
